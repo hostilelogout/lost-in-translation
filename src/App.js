@@ -1,11 +1,26 @@
 
 import './App.css';
-import {} from 'react-router-dom'
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from 'react-router-dom'
+
+import Login from './Views/Login';
+import Translation from './Views/Translation';
+import Profile from './Views/Profile';
+
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={ <Login />}> </Route>
+          <Route path='/Translation' element={ <Translation />}> </Route>
+          <Route path='/Profile' element={ <Profile />}> </Route> 
+        </Routes>
+      </div>
+    </BrowserRouter> 
   );
 }
 
