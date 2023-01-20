@@ -18,13 +18,12 @@ const LoginForm = () => {
     
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <fieldset>
-                <input type="text"
-                placeholder="What's your name?" 
-                {...register("username",requirements)}></input>               
-            </fieldset>
-
-            <button type="submit" className="btn btn-primary">Create User</button>
+            <div className="input-group mb-3">
+                <input type="text" className="form-control" placeholder="What's your name?" aria-label="What's your name?" aria-describedby="basic-addon2" {...register("username",requirements)}></input>
+                <div className="input-group-append">
+                    <button type="submit" className="btn btn-outline-secondary">Create User</button>
+                </div>
+            </div>
         </form>
     )
 }
