@@ -1,6 +1,7 @@
+import HeaderView from '../Views/HeaderView'
 const Translation = () => {
     return (
-        <h1>Translation</h1>
+        <HeaderView />
     )
 }
 

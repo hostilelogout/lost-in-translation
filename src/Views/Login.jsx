@@ -1,6 +1,12 @@
+import LoginForm from '../Components/Login/LoginForm'
+import HeaderView from '../Views/HeaderView'
+
 const Login = () => {
     return (
-        <h1>Login</h1>
+        <>
+        <HeaderView />
+        <LoginForm />
+        </>
     )
 }
 
