@@ -1,4 +1,5 @@
 import {createContext,useState,useContext} from 'react'
+import { readLocal } from '../Components/LocalStorage/internalStorage'
 
 const UserContext = createContext()
 
@@ -8,7 +9,7 @@ export const useUser = () => {
 
 const UserProvider = ({children}) => {
 
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(readLocal())
 
     const state = {
         user,
