@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../Context/UserContext';
 import { readFromLocal } from '../LocalStorage/internalStorage';
-import { createUser, getUser } from '../User/User';
+import { createUser, getUser, loginUser } from '../User/User';
 
 const requirements = {
     required: true,
@@ -14,15 +15,17 @@ const LoginForm = () => {
     const {register, handleSubmit} = useForm()
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
-    
+    const {user,setUser} = useUser()
+
     useEffect(() => {
         
-    })
+    }, [ user ])
 
     const onSubmit = async (data) => { 
 
-        setLoading(true)
-
+        //setLoading(true)
+        loginUser(data.username)
+        /*
         if(readFromLocal(data.username) === true){
             //todo login
             navigate('Translation')
@@ -44,6 +47,7 @@ const LoginForm = () => {
             setLoading(false)
             return             
         }
+        */
     }
     
     return (

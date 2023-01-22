@@ -3,6 +3,7 @@ export const localSave = (key,value) => {
 }
 
 export const readFromLocal = (key) => {
-    if (sessionStorage.getItem(key)) {return true}
+    const read = sessionStorage.getItem(key)
+    if (read != null) {return read}
     else {return false}
 }

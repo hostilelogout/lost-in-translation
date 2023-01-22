@@ -1,10 +1,9 @@
-import {createContext} from 'react'
-import {useState} from 'react'
+import {createContext,useState,useContext} from 'react'
 
 const UserContext = createContext()
 
 export const useUser = () => {
-    return UserContext(UserContext)
+    return useContext(UserContext)
 }
 
 const UserProvider = ({children}) => {

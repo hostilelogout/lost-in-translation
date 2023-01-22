@@ -1,4 +1,4 @@
-import { localSave } from '../LocalStorage/internalStorage'
+import { localSave, readFromLocal } from '../LocalStorage/internalStorage'
 
 const apiUrl = "https://incandescent-pastoral-respect.glitch.me"
 
@@ -28,5 +28,9 @@ export const getUser = async (username) => {
    })
  
    return request
+ }
+
+ export const loginUser = async (username) => {
+   console.log(readFromLocal(username))
  }
  
