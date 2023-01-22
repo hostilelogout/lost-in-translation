@@ -1,30 +1,25 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { localSave, readFromLocal } from "../LocalStorage/internalStorage";
+import { readFromLocal } from "../LocalStorage/internalStorage";
+import { updateAsync } from "../User/UpdateAsync";
 
 const TranslationHistory = () => {
-    //localSave("id",1) //TODO: remove from here.
-    const [ translations, setTranslations] = useState(false);
+    const [ translations, setTranslations] = useState(["test"]);
     useEffect(() => {
         const getAsync = async () => {
             try {
-                const response = await fetch("https://hickory-quilled-actress.glitch.me/computers")
-                const users = await response.json()
-                setTranslations(users.filter(x => x.id === readFromLocal("id"))[0].specs)
+                console.log("request")
+                const apiUrl = "https://incandescent-pastoral-respect.glitch.me"
+                const userId = readFromLocal("userid")
+                const response = await fetch(`${apiUrl}/user/${userId}`)
+                const user = await response.json()
+                setTranslations(user.translations)
             } catch (error) {
                 console.log(error)
             }
         }
-
         getAsync()
-
     }, [])
-
-    const clearTranslations = () => {
-        //TODO: delete translations in API
-        setTranslations(false)
-        return
-    }
 
     const translationList = () => {
         const listItems = translations.map((translation, index) =>
@@ -35,14 +30,15 @@ const TranslationHistory = () => {
     
     const handleSubmit = (event) => {
         event.preventDefault()
-        clearTranslations()
+        updateAsync([])
+        setTranslations([])
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <div className="form-group d-grid mt-3 gap-3">
                 <h2>Your translation history:</h2>
-                {translations ? translationList() : <p className="text-muted">No translations.</p>}
+                {translations.length ? translationList() : <p className="text-muted">No translations.</p>}
                 <button type="submit" className="btn btn-outline-secondary m-auto" disabled={translations === false}>Clear history</button>
             </div>
         </form>

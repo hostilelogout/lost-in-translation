@@ -3,8 +3,7 @@ import { readFromLocal } from "../Components/LocalStorage/internalStorage"
 
 const withAuth = Component => props => {
     const isAuthenticated = () => {
-        // TODO: check session instead
-        return true // readFromLocal("username") !== false
+        return readFromLocal("userid") !== false
     }
 
     if (isAuthenticated()) {
