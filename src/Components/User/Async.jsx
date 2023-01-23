@@ -2,7 +2,6 @@ import { readLocal } from "../LocalStorage/internalStorage"
 
 export const getAsync = async () => {
     try {
-        console.log("request")
         const apiUrl = "https://incandescent-pastoral-respect.glitch.me"
         const userId = readLocal().id
         const response = await fetch(`${apiUrl}/user/${userId}`)
@@ -15,7 +14,6 @@ export const getAsync = async () => {
 
 export const updateAsync = async (value, append) => {
     try {
-        console.log("request")
         const apiUrl = "https://incandescent-pastoral-respect.glitch.me"
         const userId = readLocal().id
         const got = await getAsync()

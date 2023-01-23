@@ -9,7 +9,6 @@ const TranslationHistory = () => {
             setTranslations(await getAsync())
         }
         getTranslations()
-
     }, [])
 
     const translationList = () => {
@@ -30,7 +29,7 @@ const TranslationHistory = () => {
             <div className="form-group d-grid mt-3 gap-3">
                 <h2>Your translation history:</h2>
                 {translations.length ? translationList() : <p className="text-muted">No translations.</p>}
-                <button type="submit" className="btn btn-outline-secondary m-auto" disabled={translations === false}>Clear history</button>
+                <button type="submit" className="btn btn-outline-secondary m-auto" disabled={translations.length < 1}>Clear history</button>
             </div>
         </form>
     )
