@@ -1,24 +1,15 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { readFromLocal } from "../LocalStorage/internalStorage";
-import { updateAsync } from "../User/UpdateAsync";
+import { getAsync, updateAsync } from "../User/Async";
 
 const TranslationHistory = () => {
-    const [ translations, setTranslations] = useState(["test"]);
+    const [ translations, setTranslations] = useState([]);
     useEffect(() => {
-        const getAsync = async () => {
-            try {
-                console.log("request")
-                const apiUrl = "https://incandescent-pastoral-respect.glitch.me"
-                const userId = readFromLocal("userid")
-                const response = await fetch(`${apiUrl}/user/${userId}`)
-                const user = await response.json()
-                setTranslations(user.translations)
-            } catch (error) {
-                console.log(error)
-            }
+        const getTranslations = async () => {
+            setTranslations(await getAsync())
         }
-        getAsync()
+        getTranslations()
+
     }, [])
 
     const translationList = () => {
@@ -30,7 +21,7 @@ const TranslationHistory = () => {
     
     const handleSubmit = (event) => {
         event.preventDefault()
-        updateAsync([])
+        updateAsync([], false)
         setTranslations([])
     }
 
