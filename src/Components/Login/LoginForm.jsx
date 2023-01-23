@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../Context/UserContext';
+import { readLocal } from '../LocalStorage/internalStorage';
 import { loginUser, patchUser } from '../User/User';
 
 const requirements = {
@@ -17,7 +18,7 @@ const LoginForm = () => {
     const {user,setUser} = useUser()
 
     useEffect(() => {
-        if(user !== null){
+        if(readLocal() !== null){
             navigate('Translation')
         }
     }, [ user, navigate ])
