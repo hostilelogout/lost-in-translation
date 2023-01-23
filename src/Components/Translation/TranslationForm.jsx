@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
+import { updateAsync } from "../User/Async";
 
 const requirements = {
     required: true,
@@ -10,21 +11,18 @@ const TranslationForm = () => {
     const {
         register, 
         handleSubmit, 
-        // formState: { errors } 
+        formState: { errors } 
     } = useForm();
     const [translation, setTranslation] = useState(false)
 
     const onSubmit = (data) => {     
-        // console.log(data)
-
-        //TODO: POST translation
+        updateAsync(data.inputText, true)
 
         setTranslation(() => {
             const sentence = data.inputText.toLowerCase()
             const signs = []
             for (const letter of sentence) {
                 if (letter !== " ") {
-                    console.log(letter)
                     const sign = require("./../../images/signs/" + letter + ".png")
                     signs.push(<img key={signs.length+1} style={{maxWidth:60+"px"}} src={sign} />)
                 }
