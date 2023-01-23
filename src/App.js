@@ -3,8 +3,7 @@ import './App.css';
 import {
   BrowserRouter,
   Routes,
-  Route,
-  NavLink
+  Route
 } from 'react-router-dom'
 
 import Login from './Views/Login';
