@@ -44,7 +44,7 @@ export const getUser = async (username) => {
     if (getLocalSave !== null){
         return getLocalSave
     }
-
+    
     const getUserData =  await getUser(username)
 
     if (getUserData !== undefined){

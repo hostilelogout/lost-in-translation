@@ -6,6 +6,6 @@ export const localSave = (key,value) => {
 
 export const readLocal = () => {
     const read = JSON.parse(sessionStorage.getItem(Object.keys(sessionStorage)))
-    if (read != null || read != undefined) {return read}
+    if (read !== null || read !== undefined) {return read}
     else {return null}
 }
