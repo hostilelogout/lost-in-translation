@@ -32,15 +32,15 @@ export const getUser = async (username) => {
 
  export const loginUser = async (username) => {
    
-    const getLocalSave = readLocal(username)
+    const getLocalSave = readLocal()
 
-    if (getLocalSave != false){
+    if (getLocalSave !== null){
         return getLocalSave
     }
 
     const getUserData =  await getUser(username)
 
-    if (getUserData != undefined){
+    if (getUserData !== undefined){
         return getUserData
     }
 

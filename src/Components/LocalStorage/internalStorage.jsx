@@ -5,5 +5,5 @@ export const localSave = (key,value) => {
 export const readLocal = () => {
     const read = sessionStorage.getItem(Object.keys(sessionStorage))
     if (read != null) {return read}
-    else {return false}
+    else {return null}
 }

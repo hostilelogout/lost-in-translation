@@ -1,12 +1,14 @@
 import { Navigate } from "react-router-dom"
+import { useUser } from "../Context/UserContext"
 
 const withAuth = Component => props => {
-    const isAuthenticated = () => {
-        // TODO: check session instead
-        return true
+    const IsAuthenticated = () => {
+        const {user} = useUser()
+        if (user !== null){return true}
+        else {return false}
     }
 
-    if (isAuthenticated()) {
+    if (IsAuthenticated()) {
         return <Component {...props} />
     } else {
         return <Navigate to="/" />

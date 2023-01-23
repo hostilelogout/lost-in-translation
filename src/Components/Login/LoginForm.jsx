@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../Context/UserContext';
-import { localSave, readFromLocal, readLocal } from '../LocalStorage/internalStorage';
-import { getUser, loginUser } from '../User/User';
+import { loginUser, patchUser } from '../User/User';
 
 const requirements = {
     required: true,
@@ -28,7 +27,7 @@ const LoginForm = () => {
         setLoading(true)
 
         const newUser = await loginUser(data.username)
-
+        console.log(newUser)
         if (newUser !== null && newUser !== undefined){
             setUser(newUser)
             setLoading(false)
