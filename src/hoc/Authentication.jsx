@@ -3,9 +3,10 @@ import { useUser } from "../Context/UserContext"
 
 const withAuth = Component => props => {
     const IsAuthenticated = () => {
-        const {user} = useUser()
-        if (user !== null){return true}
-        else {return false}
+        return true
+        // const {user} = useUser()
+        // if (user !== null){return true}
+        // else {return false}
     }
 
     if (IsAuthenticated()) {
