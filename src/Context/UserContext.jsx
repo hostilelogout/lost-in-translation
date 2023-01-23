@@ -8,9 +8,7 @@ export const useUser = () => {
 }
 
 const UserProvider = ({children}) => {
-
-    const [user, setUser] = useState(readLocal())
-
+    const [user, setUser] = useState(readLocal()?.username || null)
     const state = {
         user,
         setUser

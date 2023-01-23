@@ -27,9 +27,9 @@ const LoginForm = () => {
         setLoading(true)
 
         const newUser = await loginUser(data.username)
-        console.log(newUser)
+        
         if (newUser !== null && newUser !== undefined){
-            setUser(newUser)
+            setUser(newUser.username)
             setLoading(false)
         }
         

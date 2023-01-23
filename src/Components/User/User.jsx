@@ -26,25 +26,32 @@ export const getUser = async (username) => {
            username: `${username}`,
            translations: [] 
        })
+       
    })
-   return await request.json()
+   .then (response => response.json()
+   .then(results => {
+        localSave(results.username,results)
+        return results
+   }))
+
+   return await request
  }
 
  export const loginUser = async (username) => {
    
     const getLocalSave = readLocal()
-
+        
     if (getLocalSave !== null){
         return getLocalSave
     }
-
+    
     const getUserData =  await getUser(username)
 
     if (getUserData !== undefined){
         return getUserData
     }
-
-    if (getUserData === undefined && getLocalSave === false){
+   
+    if (getUserData === undefined && getLocalSave === null){
         return await createUser(username)
     }
 
