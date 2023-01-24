@@ -21,7 +21,7 @@ export const updateAsync = async (value, append) => {
         const options = { 
             method: 'PATCH',
             headers: {
-                'X-API-Key': "w3VMNnfFdElrsd8UdYjf",
+                'X-API-Key': process.env.REACT_APP_API_KEY,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
