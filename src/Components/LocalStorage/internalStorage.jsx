@@ -8,3 +8,7 @@ export const readLocal = () => {
     if (read !== null || read !== undefined) {return read}
     else {return null}
 }
+
+export const deleteLocal = () => {
+    sessionStorage.clear()
+}

@@ -1,11 +1,11 @@
-import HeaderView from '../Views/HeaderView'
+import HeaderForm from '../Components/Header/HeaderForm'
 import TranslationHistory from '../Components/Profile/TranslationHistory'
 import withAuth from '../hoc/Authentication'
 
 const Profile = () => {
     return (
         <>
-        <HeaderView />
+        <HeaderForm />
         <TranslationHistory />
         </>
     )

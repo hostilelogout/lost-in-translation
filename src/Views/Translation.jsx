@@ -1,11 +1,11 @@
-import HeaderView from '../Views/HeaderView'
+import HeaderForm from '../Components/Header/HeaderForm'
 import TranslationForm from '../Components/Translation/TranslationForm'
 import withAuth from '../hoc/Authentication'
 
 const Translation = () => {
     return (
         <>
-        <HeaderView />
+        <HeaderForm />
         <TranslationForm />
         </>
     )
