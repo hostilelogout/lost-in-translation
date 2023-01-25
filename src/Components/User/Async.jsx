@@ -1,5 +1,6 @@
 import { readLocal } from "../LocalStorage/internalStorage"
 
+//Fetch: get translations for session user from API.
 export const getAsync = async () => {
     try {
         const apiUrl = "https://incandescent-pastoral-respect.glitch.me"
@@ -12,12 +13,15 @@ export const getAsync = async () => {
     }
 }
 
+//Fetch: update translations for session user in API.
+//Either append value to translations.
+//Or override value in translations.
 export const updateAsync = async (value, append) => {
     try {
         const apiUrl = "https://incandescent-pastoral-respect.glitch.me"
         const userId = readLocal().id
         const got = await getAsync()
-        const v = append ? [...got, value] : value 
+        const newValue = append ? [...got, value] : value 
         const options = { 
             method: 'PATCH',
             headers: {
@@ -25,7 +29,7 @@ export const updateAsync = async (value, append) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
-                  translations: v
+                  translations: newValue
             })
         }
         await fetch(`${apiUrl}/user/${userId}`, options)

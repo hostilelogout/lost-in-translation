@@ -2,11 +2,16 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { updateAsync } from "../User/Async";
 
+//Make input required.
+//Input must be letters and spaces.
 const requirements = {
     required: true,
     pattern: /^[A-Za-z\s]+$/
 }
 
+//Component for the main translation page.
+//Convert and display sign-language version of input.
+//Save input as translation in API.
 const TranslationForm = () => {
     const {
         register, 
@@ -15,6 +20,10 @@ const TranslationForm = () => {
     } = useForm();
     const [translation, setTranslation] = useState(false)
 
+    //Handle translate event
+    //Save translation in API.
+    //Create list of sign images from input for display.
+    //Set new translation in state.
     const onSubmit = (data) => {     
         updateAsync(data.inputText, true)
 
