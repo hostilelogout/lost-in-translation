@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { getAsync, updateAsync } from "../User/Async";
+import { fetchTranslations } from "../Fetch_API/Fetch";
+import { patchTranslations } from "../Fetch_API/Patch";
+import { readLocal } from "../LocalStorage/internalStorage";
+
 
 //Component for the main profile page.
 //Display translations from API.
@@ -9,7 +12,7 @@ const TranslationHistory = () => {
     const [ translations, setTranslations] = useState([]);
     useEffect(() => {
         const getTranslations = async () => {
-            setTranslations(await getAsync())
+            setTranslations(await fetchTranslations(readLocal().id,"https://incandescent-pastoral-respect.glitch.me"))
         }
         getTranslations()
     }, [])
@@ -27,7 +30,7 @@ const TranslationHistory = () => {
     //Clears translations in state.
     const handleSubmit = (event) => {
         event.preventDefault()
-        updateAsync([], false)
+        patchTranslations([], false)
         setTranslations([])
     }
 

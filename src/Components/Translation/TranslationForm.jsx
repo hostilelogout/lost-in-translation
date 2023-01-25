@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
-import { updateAsync } from "../User/Async";
+import { patchTranslations } from '../Fetch_API/Patch';
 
 //Make input required.
 //Input must be letters and spaces.
@@ -25,7 +25,7 @@ const TranslationForm = () => {
     //Create list of sign images from input for display.
     //Set new translation in state.
     const onSubmit = (data) => {     
-        updateAsync(data.inputText, true)
+        patchTranslations(data.inputText, true)
 
         setTranslation(() => {
             const sentence = data.inputText.toLowerCase()
