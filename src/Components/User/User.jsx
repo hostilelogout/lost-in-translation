@@ -19,7 +19,7 @@ export const getUser = async (username) => {
     const request = await fetch(`${apiUrl}/user`, {
        method: 'POST',
        headers: {
-         'X-API-Key': "w3VMNnfFdElrsd8UdYjf",
+         'X-API-Key': process.env.API_KEY,
          'Content-Type': 'application/json'
        },
        body: JSON.stringify({ 
