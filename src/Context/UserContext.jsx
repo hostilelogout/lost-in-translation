@@ -8,7 +8,7 @@ export const useUser = () => {
 }
 
 const UserProvider = ({children}) => {
-    const [user, setUser] = useState(readLocal()?.username || null)
+    const [user, setUser] = useState(readLocal()?.username || null) // checks to see if there is any data in session and if not return null. this means immediate redirect to login
     const state = {
         user,
         setUser

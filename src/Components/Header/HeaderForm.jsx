@@ -5,7 +5,9 @@ import { useUser } from '../../Context/UserContext';
 import { deleteLocal } from '../LocalStorage/internalStorage';
 
 const headerlogo = require("./../../images/headerlogo.png")
-const dropdownImg = require("./../../images/Logo-Hello.png")
+
+// handles the top part of the website
+// handles navigation after being logged in.
 
 const HeaderForm = () => {
     const navigate = useNavigate()
@@ -15,7 +17,7 @@ const HeaderForm = () => {
 
     useEffect(() => {
         if(user === null){
-            navigate('/')  
+            navigate('/')  // if no user exist return us to login page
         }
     }, [ user, navigate ])
 
@@ -25,12 +27,12 @@ const HeaderForm = () => {
     }
     
     const currentPath = () => {
-        
+        //checks the current path
         if (location.pathname === '/Translation'){
-            return 'Profile'
+            return 'Profile' // returns profile to be used for a button
         }
         else if (location.pathname === '/Profile'){
-            return 'Translation'
+            return 'Translation'// returns Translation to be used for a button
         }
        
     }
@@ -48,7 +50,7 @@ const HeaderForm = () => {
                             </li>
                         </ul>
                         <div className="input-group-append">
-                            <button type="submit" className="btn btn-outline-secondary text-white" hidden={user === null}>Logout</button>
+                            <button type="submit" className="btn btn-outline-secondary text-white" hidden={user === null}>Logout</button> 
                         </div>
                     </div>
                 </div>

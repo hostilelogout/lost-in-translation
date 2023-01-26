@@ -9,6 +9,9 @@ const requirements = {
     minLength: 3
 }
 
+// displays the login form
+// handles what happens when a user is created
+// redirects user to Translation page upon creation or existing user.
 const LoginForm = () => {
 
     const {register, handleSubmit} = useForm()
@@ -26,7 +29,7 @@ const LoginForm = () => {
        
         setLoading(true)
 
-        const newUser = await loginUser(data.username)
+        const newUser = await loginUser(data.username) // waits for the logged in user to return and store it as a variable
         
         if (newUser !== null && newUser !== undefined){
             setUser(newUser.username)
