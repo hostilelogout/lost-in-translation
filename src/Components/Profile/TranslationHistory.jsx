@@ -16,7 +16,7 @@ const TranslationHistory = () => {
 
     //Create list items from translations array for display.
     const translationList = () => {
-        const listItems = translations.map((translation, index) =>
+        const listItems = translations.slice(-10).reverse().map((translation, index) =>
             <li className="list-group-item" key={index}>{translation}</li>
           );
           return <ul className="list-group">{listItems}</ul>;
